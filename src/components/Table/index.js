@@ -7,7 +7,10 @@ const Table = (props) => {
   const putRows = () => (
     props.posts.map((item) => (
       <tr key={ item.id }>
-        <td>{ item.title }</td>
+        <td>
+          <h3>{ item.title }</h3>
+          <p>{ item.body }</p>
+        </td>
       </tr>
     ))
   )

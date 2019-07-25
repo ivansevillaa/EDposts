@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import * as postsAction from '../../actions/postsAction'
 
@@ -10,9 +11,10 @@ import Table from '../Table'
 
 const Posts = (props) => {
   useEffect(() => {
-    props.bringAll()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (!props.posts.length) {
+      props.bringAll()
+    }
+  }, [props])
 
   const putContent = () => {
     if(props.loading) return <Spinner />
@@ -23,6 +25,11 @@ const Posts = (props) => {
   return(
     <Wrapper>
       <h1>EDposts</h1>
+      <Link to='/save'>
+        <button>
+          Agregar post
+        </button>
+      </Link>
       { putContent() }
     </Wrapper>
   )
