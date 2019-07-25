@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 
 import * as postsAction from '../../actions/postsAction'
 
-import { Wrapper, Table } from './styles'
+import { Wrapper } from './styles'
 import Spinner from '../Spinner'
 import Fatal from '../Fatal'
+import Table from '../Table'
 
 const Posts = (props) => {
   useEffect(() => {
@@ -13,31 +14,10 @@ const Posts = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const putRows = () => (
-    props.posts.map((item) => (
-      <tr key={ item.id }>
-        <td>{ item.title }</td>
-      </tr>
-    ))
-  )
-
   const putContent = () => {
     if(props.loading) return <Spinner />
-
     if(props.error) return <Fatal message={ props.error } />
-    
-    return(
-      <Table>
-        <thead>
-          <tr>
-            <th>Posts</th>
-          </tr>
-        </thead>
-        <tbody>
-          { putRows() }
-        </tbody>
-      </Table>
-    )
+    return <Table />
   }
   
   return(
