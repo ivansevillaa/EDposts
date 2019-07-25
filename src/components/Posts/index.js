@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import * as postsAction from '../../actions/postsAction'
 
 import { Wrapper, Table } from './styles'
+import Spinner from '../Spinner'
+import Fatal from '../Fatal'
 
 const Posts = (props) => {
   useEffect(() => {
@@ -18,10 +20,13 @@ const Posts = (props) => {
       </tr>
     ))
   )
-  
-  return(
-    <Wrapper>
-      <h1>EDposts</h1>
+
+  const putContent = () => {
+    if(props.loading) return <Spinner />
+
+    if(props.error) return <Fatal message={ props.error } />
+    
+    return(
       <Table>
         <thead>
           <tr>
@@ -32,6 +37,13 @@ const Posts = (props) => {
           { putRows() }
         </tbody>
       </Table>
+    )
+  }
+  
+  return(
+    <Wrapper>
+      <h1>EDposts</h1>
+      { putContent() }
     </Wrapper>
   )
 }
