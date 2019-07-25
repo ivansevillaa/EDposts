@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 import { GlobalStyle } from './GlobalStyles'
-import { Posts } from './components/Posts'
+import Posts from './components/Posts'
 
 export const App = () => (
   <BrowserRouter>

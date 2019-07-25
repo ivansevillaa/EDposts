@@ -3,9 +3,9 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-  switch(action.posts) {
+  switch(action.type) {
     case 'bring_posts':
-      return { ...state, posts: action}
+      return { ...state, posts: action.payload}
     default:
       return state
   }

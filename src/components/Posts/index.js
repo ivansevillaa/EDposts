@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+
+import * as postsAction from '../../actions/postsAction'
 
 import { Wrapper, Table } from './styles'
 
-export const Posts = () => {
-  const [posts, setPosts] = useState([])
-  
+const Posts = (props) => {
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
-      setPosts(response.data)
-    }
-    fetchData()
+    props.bringAll()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const putRows = () => (
-    posts.map((item) => (
+    props.posts.map((item) => (
       <tr key={ item.id }>
         <td>{ item.title }</td>
       </tr>
     ))
   )
-
+  
   return(
     <Wrapper>
       <h1>EDposts</h1>
@@ -38,3 +35,7 @@ export const Posts = () => {
     </Wrapper>
   )
 }
+
+const mapStateToProps = (reducers) => reducers.postsReducer
+
+export default connect(mapStateToProps, postsAction)(Posts)
