@@ -4,7 +4,11 @@ export const Wrapper = styled.div`
   margin: 100px;
 `
 
-export const Tabla = styled.table`
+export const Table = styled.table`
   width: 100%;
   text-align: left;
+  & td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 `

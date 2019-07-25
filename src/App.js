@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 import { GlobalStyle } from './GlobalStyles'
-import { Table } from './components/Table'
+import { Posts } from './components/Posts'
 
 export const App = () => (
-  <Fragment>
+  <BrowserRouter>
     <GlobalStyle />
-    <Table />
-  </Fragment>
+    <Route exact path='/' component={ Posts } />
+  </BrowserRouter>
 )
