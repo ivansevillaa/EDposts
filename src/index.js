@@ -1,3 +1,6 @@
+/*
+  Entry point de la app, aca encontramos el store de la App, y renderizamos el componente 'App'
+*/
 import React from 'react'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
