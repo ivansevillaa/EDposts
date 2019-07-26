@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 
 import * as postsAction from '../../actions/postsAction'
 
+import { Wrapper, Title, Formulario, Input } from './styles'
 import Spinner from '../Spinner'
 import Fatal from '../Fatal'
 
@@ -86,17 +87,17 @@ const Form = (props) => {
   }
 
   return(
-    <div>
+    <Wrapper>
       { props.back  && <Redirect to='/' /> }
-      <h1>{ props.titleForm }</h1>
-      <form>
-        <input
+      <Title>{ props.titleForm }</Title>
+      <Formulario>
+        <Input
           type="text" 
           placeholder='Título del post' 
           value={ props.title }
           onChange={ handleTitleChange }
         />
-        <input 
+        <Input 
           type="text" 
           placeholder='Redacte su post...'
           value={ props.body }
@@ -108,9 +109,9 @@ const Form = (props) => {
         >
           Guardar
         </button>
-      </form>
+      </Formulario>
       { showAction() }
-    </div>
+    </Wrapper>
   )
 }
 

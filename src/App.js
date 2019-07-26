@@ -12,7 +12,17 @@ export const App = () => (
   <BrowserRouter>
     <GlobalStyle />
     <Route exact path='/' component={ Posts } />
-    <Route exact path='/save' component={ Form } />
-    <Route exact path='/edit/:id' component={ Form } />
+    <Route 
+      exact path='/save' 
+      render={(props) => (
+        <Form {...props} titleForm='Agregar Post' />
+      )} 
+    />
+    <Route 
+      exact path='/edit/:id'
+      render={(props) => (
+        <Form {...props} titleForm='Editar Post' />
+      )}  
+    />
   </BrowserRouter>
 )
